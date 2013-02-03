@@ -50,7 +50,13 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        mappings:
+            model:
+                type: annotation
+                dir: %kernel.root_dir%/../src/SGS/Model
+                prefix: SGS\Model
+                alias: Model
+
 
 # Swiftmailer Configuration
 swiftmailer:

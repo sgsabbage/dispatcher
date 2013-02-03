@@ -8,6 +8,8 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
+use SGS\Model\User;
+
 //
 // Require 3rd-party libraries here:
 //
@@ -36,11 +38,20 @@ class FeatureContext extends MinkContext
      */
     public function aUserIdentifiedBy($type, $email, $pass)
     {
-        $user = new \SGS\Model\User();
+        $user = new User();
 
         $user->setEmail($email);
         $user->setPassword($pass);
 
-
+        switch ($type):
+            case "dispatcher":
+                $user->setType(User::TYPE_DISPATCHER);
+                break;
+            case "requester":
+                $user->setType(User::TYPE_REQUESTER);
+                break;
+            case "engineer":
+                $user->setType(User::TYPE_ENGINEER);
+                break
     }
 }

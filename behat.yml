@@ -1,4 +1,8 @@
 default:
+    paths:
+        features: features
+    context:
+        class:  SGS\Behat\FeatureContext
     formatter:
         name: progress
     extensions:
@@ -9,3 +13,4 @@ default:
                 debug: true
         Behat\MinkExtension\Extension:
             base_url: 'http://www.acme.dev/app_test.php/'
+            goutte: ~

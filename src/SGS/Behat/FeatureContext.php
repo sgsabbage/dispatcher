@@ -1,4 +1,5 @@
 <?php
+namespace SGS\Behat;
 
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
@@ -43,7 +44,7 @@ class FeatureContext extends MinkContext
         $user->setEmail($email);
         $user->setPassword($pass);
 
-        switch ($type):
+        switch ($type){
             case "dispatcher":
                 $user->setType(User::TYPE_DISPATCHER);
                 break;
@@ -52,6 +53,7 @@ class FeatureContext extends MinkContext
                 break;
             case "engineer":
                 $user->setType(User::TYPE_ENGINEER);
-                break
+                break;
+        }
     }
 }

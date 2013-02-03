@@ -15,7 +15,13 @@ security:
     role_hierarchy:
 
     firewalls:
+        dispatch:
+            pattern: ^/dispatch
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: true
-            anonymous: true
+            security: false

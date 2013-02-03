@@ -21,8 +21,14 @@ use SGS\Model\User;
 /**
  * Features context.
  */
-class FeatureContext extends MinkContext
+class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Context\KernelAwareInterface
 {
+
+    /**
+     * @var \Symfony\Component\HttpKernel\KernelInterface $kernel
+     */
+    private $kernel = null;
+    
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
@@ -35,11 +41,25 @@ class FeatureContext extends MinkContext
     }
 
     /**
+     * @param \Symfony\Component\HttpKernel\KernelInterface $kernel
+     *
+     * @return null
+     */
+    public function setKernel(\Symfony\Component\HttpKernel\KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
+
+    /**
      * @Given /^an? (dispatcher|requester|engineer) identified by "([^"]*)", "([^"]*)"$/
      */
     public function aUserIdentifiedBy($type, $email, $pass)
     {
         $user = new User();
+
+        $factory = $this->kernel->getContainer()->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($user);
+        $pass = $encoder->encodePassword($pass,$user->getSalt());
 
         $user->setEmail($email);
         $user->setPassword($pass);

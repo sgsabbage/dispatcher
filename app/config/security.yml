@@ -3,9 +3,16 @@ jms_security_extra:
     expressions: true
 
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
     providers:
         in_memory:
             memory:
+
+    access_control:
+
+    role_hierarchy:
 
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
@@ -13,4 +20,5 @@ security:
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+            security: true
+            anonymous: true

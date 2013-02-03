@@ -9,8 +9,8 @@
         "symfony/symfony": "2.1.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.1.*",
-	"doctrine/migrations": "dev-master",
-	"doctrine/doctrine-migrations-bundle": "dev-master",
+        "doctrine/migrations": "dev-master",
+        "doctrine/doctrine-migrations-bundle": "dev-master",
         "twig/extensions": "1.0.*@dev",
         "symfony/assetic-bundle": "2.1.*",
         "symfony/swiftmailer-bundle": "2.1.*",
@@ -20,7 +20,9 @@
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
-        "kriswallsmith/assetic": "1.1.*@dev"
+        "kriswallsmith/assetic": "1.1.*@dev",
+        "behat/behat": "2.4.*@stable",
+        "behat/mink": "1.4@stable"
     },
     "scripts": {
         "post-install-cmd": [
@@ -39,5 +41,8 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"
+    },
+    "config": {
+        "bin-dir": "bin/"
     }
 }

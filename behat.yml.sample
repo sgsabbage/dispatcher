@@ -12,5 +12,5 @@ default:
                 env: test
                 debug: true
         Behat\MinkExtension\Extension:
-            base_url: 'http://www.acme.dev/app_test.php/'
+            base_url: ''
             goutte: ~

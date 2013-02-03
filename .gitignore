@@ -12,3 +12,6 @@ bin/*
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
+
+# Ignore behat.yml (contains base_url)
+behat.yml

@@ -31,15 +31,16 @@ class FeatureContext extends MinkContext
         // Initialize your context here
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    /**
+     * @Given /^an? (dispatcher|requester|engineer) identified by "([^"]*)", "([^"]*)"$/
+     */
+    public function aUserIdentifiedBy($type, $email, $pass)
+    {
+        $user = new \SGS\Model\User();
+
+        $user->setEmail($email);
+        $user->setPassword($pass);
+
+
+    }
 }

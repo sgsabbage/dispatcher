@@ -48,6 +48,23 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
     public function setKernel(\Symfony\Component\HttpKernel\KernelInterface $kernel)
     {
         $this->kernel = $kernel;
+        
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function cleanDatabase($event)
+    {
+        $metadatas = $this->kernel->getContainer()->get('doctrine')->getEntityManager()->getMetadataFactory()->getAllMetadata();
+
+        if ( ! empty($metadatas)) {
+            $tool = new \Doctrine\ORM\Tools\SchemaTool($this->kernel->getContainer()->get('doctrine')->getEntityManager());
+            $tool->dropDatabase();
+            $tool->createSchema($metadatas);
+        } else {
+            throw new Doctrine\DBAL\Schema\SchemaException('No Metadata Classes to process.');
+        }
     }
 
     /**
@@ -55,9 +72,10 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
      */
     public function aUserIdentifiedBy($type, $email, $pass)
     {
+        $container = $this->kernel->getContainer();
         $user = new User();
 
-        $factory = $this->kernel->getContainer()->get('security.encoder_factory');
+        $factory = $container->get('security.encoder_factory');
         $encoder = $factory->getEncoder($user);
         $pass = $encoder->encodePassword($pass,$user->getSalt());
 
@@ -75,5 +93,9 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
                 $user->setType(User::TYPE_ENGINEER);
                 break;
         }
+
+        $em = $container->get('doctrine')->getEntityManager();
+        $em->persist($user);
+        $em->flush();
     }
 }

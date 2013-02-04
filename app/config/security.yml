@@ -7,8 +7,8 @@ security:
         SGS\Model\User: sha512
 
     providers:
-        in_memory:
-            memory:
+        database:
+            entity: { class: Model:User, property: email }
 
     access_control:
         - { path: ^/dispatch/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

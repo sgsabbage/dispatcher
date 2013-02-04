@@ -3,6 +3,10 @@ jms_security_extra:
     expressions: true
 
 security:
+
+    access_decision_manager:
+        strategy:             unanimous
+
     encoders:
         SGS\Model\User: sha512
 
@@ -22,6 +26,7 @@ security:
             pattern: ^/dispatch/login$
             anonymous: ~
         dispatch:
+            access_denied_url: /dispatch/login
             pattern: ^/dispatch
             form_login:
                 login_path: /dispatch/login

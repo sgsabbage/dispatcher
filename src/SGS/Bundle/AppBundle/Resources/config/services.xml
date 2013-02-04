@@ -4,9 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <service id="security.access.type_voter"
-         class="SGS\Bundle\AppBundle\Security\Voter\TypeVoter" public="false">
-        <tag name="security.voter" />
-    </service>
+    <services>
+        <service id="security.access.type_voter"
+             class="SGS\Bundle\AppBundle\Security\Voter\TypeVoter" public="false">
+            <tag name="security.voter" />
+        </service>
+    </services>
 
 </container>

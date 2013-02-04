@@ -1,8 +1,10 @@
-# Internal routing configuration to handle ESI
-# ****** WARNING ******
-# This route should be enabled with caution as it can open a security vulnerability
-# see http://symfony.com/blog/security-release-symfony-2-0-20-and-2-1-5-released for more information
-# ****** WARNING ******
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal
+dispatch_dashboard:
+    resource: "@SGSAppBundle/Controller/Dispatch/DashboardController.php"
+    type: annotation
+
+dispatch_login_check:
+    pattern:   /dispatch_login_check
+
+dispatch_login:
+    resource: "@SGSAppBundle/Controller/Dispatch/LoginController.php"
+    type: annotation

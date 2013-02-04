@@ -11,16 +11,20 @@ security:
             memory:
 
     access_control:
+        - { path: ^/dispatch/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dispatch, roles: TYPE_DISPATCHER }
 
     role_hierarchy:
 
     firewalls:
+        dispatch_login:
+            pattern: ^/dispatch/login$
+            anonymous: ~
         dispatch:
             pattern: ^/dispatch
-            anonymous: ~
             form_login:
-                login_path: /login
-                check_path: /login_check
+                login_path: /dispatch/login
+                check_path: /dispatch/login_check
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

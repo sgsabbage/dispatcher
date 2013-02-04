@@ -1,0 +1,13 @@
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('dispatch_login_check') }}" method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="_email" value="{{ last_email }}" />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password" />
+
+    <button type="submit">login</button>
+</form>

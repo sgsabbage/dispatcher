@@ -27,7 +27,9 @@
         "behat/mink-extension": "*",
         "behat/symfony2-extension": "*",
         "behat/mink-browserkit-driver":  "*",
-        "behat/mink-goutte-driver":   "*"
+        "behat/mink-goutte-driver":   "*",
+
+        "mockery/mockery": ">=0.7.2"
     },
     "scripts": {
         "post-install-cmd": [

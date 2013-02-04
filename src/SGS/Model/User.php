@@ -159,6 +159,11 @@ class User implements UserInterface{
         return $this->type;
     }
 
+    public function hasType($type)
+    {
+        return (($this->type & $type) == true);
+    }
+
     /**
      * @inheritDoc
      */

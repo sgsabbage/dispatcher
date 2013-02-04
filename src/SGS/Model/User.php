@@ -12,7 +12,7 @@ class User implements UserInterface{
 
     const TYPE_ENGINEER   = 1;
     const TYPE_REQUESTER  = 2;
-    const TYPE_DISPATCHER = 3;
+    const TYPE_DISPATCHER = 4;
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -36,7 +36,7 @@ class User implements UserInterface{
     protected $password;
 
     /**
-     * @ORM\Column(type="integer", length=1)
+     * @ORM\Column(type="integer")
      */
     protected $type;
 
@@ -120,6 +120,32 @@ class User implements UserInterface{
     {
         $this->type = $type;
     
+        return $this;
+    }
+
+    /**
+     * Add type
+     *
+     * @param integer $type
+     * @return User
+     */
+    public function addType($type)
+    {
+        $this->type = ($type | $this->type);
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param integer $type
+     * @return User
+     */
+    public function removeType($type)
+    {
+        $this->type = ($this->type & ~$type);
+
         return $this;
     }
 

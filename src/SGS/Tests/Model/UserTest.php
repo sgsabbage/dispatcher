@@ -48,4 +48,34 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->user->setType(User::TYPE_ENGINEER);
         $this->assertEquals(User::TYPE_ENGINEER,$this->user->getType());
     }
+
+    public function testAddType()
+    {
+        $this->user->setType(User::TYPE_ENGINEER);
+        $this->user->addType(User::TYPE_DISPATCHER);
+        $this->assertEquals(User::TYPE_ENGINEER | User::TYPE_DISPATCHER, $this->user->getType());
+    }
+
+    public function testAddTypeWhenAlreadySet()
+    {
+        $this->user->setType(User::TYPE_ENGINEER);
+        $this->user->addType(User::TYPE_DISPATCHER);
+        $this->user->addType(User::TYPE_DISPATCHER);
+        $this->assertEquals(User::TYPE_ENGINEER | User::TYPE_DISPATCHER, $this->user->getType());
+    }
+
+    public function testRemoveType()
+    {
+        $this->user->setType(User::TYPE_ENGINEER | User::TYPE_DISPATCHER);
+        $this->user->removeType(User::TYPE_DISPATCHER);
+        $this->assertEquals(User::TYPE_ENGINEER, $this->user->getType());
+    }
+
+    public function testRemoveTypeWhenAlreadyRemoved()
+    {
+        $this->user->setType(User::TYPE_ENGINEER | User::TYPE_DISPATCHER);
+        $this->user->removeType(User::TYPE_DISPATCHER);
+        $this->user->removeType(User::TYPE_DISPATCHER);
+        $this->assertEquals(User::TYPE_ENGINEER, $this->user->getType());
+    }
 }

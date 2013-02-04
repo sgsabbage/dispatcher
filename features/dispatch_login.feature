@@ -7,7 +7,7 @@ Feature: Dispatch login
         And I am on "/dispatch/login"
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
-        And I press "login"
+        And I press "Login"
         Then I should be on "/dispatch"
 
     Scenario: Failed login due to incorrect credentials
@@ -15,7 +15,7 @@ Feature: Dispatch login
         And I am on "/dispatch/login"
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bars"
-        And I press "login"
+        And I press "Login"
         Then I should be on "/dispatch/login"
         And I should see "Invalid credentials"
 
@@ -24,6 +24,6 @@ Feature: Dispatch login
         And I am on "/dispatch/login"
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
-        And I press "login"
+        And I press "Login"
         Then I should be on "/dispatch/login"
         And I should see "Invalid permissions"

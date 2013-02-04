@@ -1,13 +1,17 @@
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
+{% extends '::base.html.twig' %}
 
-<form action="{{ path('dispatch_login_check') }}" method="post">
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="_email" value="{{ last_email }}" />
+{% block body %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
+    <form action="{{ path('dispatch_login_check') }}" method="post">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="_email" value="{{ last_email }}" />
 
-    <button type="submit">login</button>
-</form>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+        
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

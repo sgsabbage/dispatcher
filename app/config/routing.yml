@@ -3,7 +3,7 @@ dispatch_dashboard:
     type: annotation
 
 dispatch_login_check:
-    pattern:   /dispatch_login_check
+    pattern:   /dispatch/login_check
 
 dispatch_login:
     resource: "@SGSAppBundle/Controller/Dispatch/LoginController.php"

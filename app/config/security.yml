@@ -11,7 +11,8 @@ security:
             entity: { class: Model:User, property: email }
 
     access_control:
-        - { path: ^/dispatch/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dispatch/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dispatch/login_check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/dispatch, roles: TYPE_DISPATCHER }
 
     role_hierarchy:
@@ -25,6 +26,8 @@ security:
             form_login:
                 login_path: /dispatch/login
                 check_path: /dispatch/login_check
+                username_parameter: _email
+                default_target_path: /dispatch
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

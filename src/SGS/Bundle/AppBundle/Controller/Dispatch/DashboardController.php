@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DashboardController
 {
     /**
-     * @Route("/")
+     * @Route("", name="dispatch_dashboard_index")
      */
     public function indexAction()
     {

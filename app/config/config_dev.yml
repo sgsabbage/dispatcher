@@ -22,5 +22,15 @@ monolog:
 assetic:
     use_controller: true
 
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     localhost
+        port:     3306
+        dbname:   dispatcher_dev
+        user:     dispatcher_dev
+        password: dispatcher_dev
+        charset:  UTF8
+
 #swiftmailer:
 #    delivery_address: me@example.com

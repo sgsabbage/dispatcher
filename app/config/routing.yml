@@ -8,3 +8,14 @@ dispatch_login_check:
 dispatch_login:
     resource: "@SGSAppBundle/Controller/Dispatch/LoginController.php"
     type: annotation
+
+agent_dashboard:
+    resource: "@SGSAppBundle/Controller/Agent/DashboardController.php"
+    type: annotation
+
+agent_login_check:
+    pattern:   /agent/login_check
+
+agent_login:
+    resource: "@SGSAppBundle/Controller/Agent/LoginController.php"
+    type: annotation

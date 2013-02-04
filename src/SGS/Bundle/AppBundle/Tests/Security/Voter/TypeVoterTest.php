@@ -35,11 +35,11 @@ class TypeVoterTest extends \PHPUnit_Framework_TestCase
         $user = $this->getUser();
         $token = $this->getUserToken($user);
 
-        $user->shouldReceive('hasType')->with(\SGS\Model\User::TYPE_ENGINEER)->andReturn(true);
+        $user->shouldReceive('hasType')->with(\SGS\Model\User::TYPE_AGENT)->andReturn(true);
 
         $this->assertEquals(
             VoterInterface::ACCESS_GRANTED,
-            $this->voter->vote($token,null,array('TYPE_ENGINEER'))
+            $this->voter->vote($token,null,array('TYPE_AGENT'))
         );
     }
 
@@ -48,11 +48,11 @@ class TypeVoterTest extends \PHPUnit_Framework_TestCase
         $user = $this->getUser();
         $token = $this->getUserToken($user);
 
-        $user->shouldReceive('hasType')->with(\SGS\Model\User::TYPE_ENGINEER)->andReturn(false);
+        $user->shouldReceive('hasType')->with(\SGS\Model\User::TYPE_AGENT)->andReturn(false);
 
         $this->assertEquals(
             VoterInterface::ACCESS_DENIED,
-            $this->voter->vote($token,null,array('TYPE_ENGINEER'))
+            $this->voter->vote($token,null,array('TYPE_AGENT'))
         );
     }
 

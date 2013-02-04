@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface{
 
-    const TYPE_ENGINEER   = 1;
+    const TYPE_AGENT   = 1;
     const TYPE_REQUESTER  = 2;
     const TYPE_DISPATCHER = 4;
     /**

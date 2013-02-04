@@ -68,7 +68,7 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
     }
 
     /**
-     * @Given /^an? (dispatcher|requester|engineer) identified by "([^"]*)", "([^"]*)"$/
+     * @Given /^an? (dispatcher|requester|agent) identified by "([^"]*)", "([^"]*)"$/
      */
     public function aUserIdentifiedBy($type, $email, $pass)
     {
@@ -89,8 +89,8 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
             case "requester":
                 $user->setType(User::TYPE_REQUESTER);
                 break;
-            case "engineer":
-                $user->setType(User::TYPE_ENGINEER);
+            case "agent":
+                $user->setType(User::TYPE_AGENT);
                 break;
         }
 

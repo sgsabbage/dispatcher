@@ -45,55 +45,55 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
     public function testSetGetType()
     {
-        $this->user->setType(User::TYPE_ENGINEER);
-        $this->assertEquals(User::TYPE_ENGINEER,$this->user->getType());
+        $this->user->setType(User::TYPE_AGENT);
+        $this->assertEquals(User::TYPE_AGENT,$this->user->getType());
     }
 
     public function testAddType()
     {
-        $this->user->setType(User::TYPE_ENGINEER);
+        $this->user->setType(User::TYPE_AGENT);
         $this->user->addType(User::TYPE_DISPATCHER);
-        $this->assertEquals(User::TYPE_ENGINEER | User::TYPE_DISPATCHER, $this->user->getType());
+        $this->assertEquals(User::TYPE_AGENT | User::TYPE_DISPATCHER, $this->user->getType());
     }
 
     public function testAddTypeWhenAlreadySet()
     {
-        $this->user->setType(User::TYPE_ENGINEER);
+        $this->user->setType(User::TYPE_AGENT);
         $this->user->addType(User::TYPE_DISPATCHER);
         $this->user->addType(User::TYPE_DISPATCHER);
-        $this->assertEquals(User::TYPE_ENGINEER | User::TYPE_DISPATCHER, $this->user->getType());
+        $this->assertEquals(User::TYPE_AGENT | User::TYPE_DISPATCHER, $this->user->getType());
     }
 
     public function testRemoveType()
     {
-        $this->user->setType(User::TYPE_ENGINEER | User::TYPE_DISPATCHER);
+        $this->user->setType(User::TYPE_AGENT | User::TYPE_DISPATCHER);
         $this->user->removeType(User::TYPE_DISPATCHER);
-        $this->assertEquals(User::TYPE_ENGINEER, $this->user->getType());
+        $this->assertEquals(User::TYPE_AGENT, $this->user->getType());
     }
 
     public function testRemoveTypeWhenAlreadyRemoved()
     {
-        $this->user->setType(User::TYPE_ENGINEER | User::TYPE_DISPATCHER);
+        $this->user->setType(User::TYPE_AGENT | User::TYPE_DISPATCHER);
         $this->user->removeType(User::TYPE_DISPATCHER);
         $this->user->removeType(User::TYPE_DISPATCHER);
-        $this->assertEquals(User::TYPE_ENGINEER, $this->user->getType());
+        $this->assertEquals(User::TYPE_AGENT, $this->user->getType());
     }
 
     public function testHasTypeWhenTrue()
     {
-        $this->user->setType(User::TYPE_ENGINEER);
-        $this->assertTrue($this->user->hasType(User::TYPE_ENGINEER));
+        $this->user->setType(User::TYPE_AGENT);
+        $this->assertTrue($this->user->hasType(User::TYPE_AGENT));
     }
 
     public function testHasTypeWhenTrueWithMultipleTypes()
     {
-        $this->user->setType(User::TYPE_ENGINEER | User::TYPE_DISPATCHER);
-        $this->assertTrue($this->user->hasType(User::TYPE_ENGINEER));
+        $this->user->setType(User::TYPE_AGENT | User::TYPE_DISPATCHER);
+        $this->assertTrue($this->user->hasType(User::TYPE_AGENT));
     }
 
     public function testHasTypeWhenFalse()
     {
         $this->user->setType(User::TYPE_DISPATCHER);
-        $this->assertFalse($this->user->hasType(User::TYPE_ENGINEER));
+        $this->assertFalse($this->user->hasType(User::TYPE_AGENT));
     }
 }

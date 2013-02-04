@@ -16,8 +16,9 @@ security:
 
     access_control:
         - { path: ^/dispatch/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/dispatch/login_check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/dispatch, roles: TYPE_DISPATCHER }
+        - { path: ^/agent/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/agent, roles: TYPE_AGENT }
 
     role_hierarchy:
 
@@ -33,6 +34,18 @@ security:
                 check_path: /dispatch/login_check
                 username_parameter: _email
                 default_target_path: /dispatch
+
+        agent_login:
+            pattern: ^/agent/login$
+            anonymous: ~
+        agent:
+            access_denied_url: /agent/denied
+            pattern: ^/agent
+            form_login:
+                login_path: /agent/login
+                check_path: /agent/login_check
+                username_parameter: _email
+                default_target_path: /agent
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

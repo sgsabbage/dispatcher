@@ -17,7 +17,7 @@ Feature: Dispatch login
         And I fill in "password" with "bars"
         And I press "Login"
         Then I should be on "/dispatch/login"
-        And I should see "Invalid credentials"
+        And I should see "Bad credentials"
 
     Scenario: Failed login due to wrong user type
         Given a requester identified by "foo@foo.com", "bar"
@@ -25,5 +25,4 @@ Feature: Dispatch login
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
         And I press "Login"
-        Then I should be on "/dispatch/login"
-        And I should see "Invalid permissions"
+        Then I should see "login.permissions.invalid"

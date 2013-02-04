@@ -26,7 +26,7 @@ security:
             pattern: ^/dispatch/login$
             anonymous: ~
         dispatch:
-            access_denied_url: /dispatch/login
+            access_denied_url: /dispatch/denied
             pattern: ^/dispatch
             form_login:
                 login_path: /dispatch/login

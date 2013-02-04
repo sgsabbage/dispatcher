@@ -36,4 +36,13 @@ class LoginController extends ContainerAware
                 'error'         => $error,
         );
     }
+
+    /**
+     * @Route("/denied")
+     * @Template()
+     */
+    public function deniedAction()
+    {
+        return array();
+    }
 }

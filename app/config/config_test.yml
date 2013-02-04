@@ -5,6 +5,8 @@ framework:
     test: ~
     session:
         storage_id: session.storage.mock_file
+    translator:      { fallback: test }
+    default_locale: test
 
 web_profiler:
     toolbar: false

@@ -2,7 +2,7 @@
 
 {% block body %}
     {% if error %}
-        <div>{{ error.message }}</div>
+            <div>{{ error.message|trans }}</div>
     {% endif %}
 
     <form action="{{ path('dispatch_login_check') }}" method="post">
@@ -11,7 +11,7 @@
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="_password" />
-        
+
         <button type="submit">Login</button>
     </form>
 {% endblock %}

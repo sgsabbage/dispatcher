@@ -157,8 +157,13 @@ class User implements UserInterface{
     public function getType()
     {
         return $this->type;
-    }
+    }   
 
+    /**
+     * Checks if the user has the specified type
+     *
+     * @return boolean
+     */
     public function hasType($type)
     {
         return (($this->type & $type) == true);

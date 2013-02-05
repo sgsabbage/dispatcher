@@ -13,6 +13,8 @@ class User implements UserInterface{
     const TYPE_AGENT   = 1;
     const TYPE_REQUESTER  = 2;
     const TYPE_DISPATCHER = 4;
+    const TYPE_ADMIN = 8;
+    
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id

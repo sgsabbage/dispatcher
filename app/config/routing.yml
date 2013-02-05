@@ -30,3 +30,14 @@ request_login_check:
 request_login:
     resource: "@SGSAppBundle/Controller/Request/LoginController.php"
     type: annotation
+
+admin_dashboard:
+    resource: "@SGSAppBundle/Controller/Admin/DashboardController.php"
+    type: annotation
+
+admin_login_check:
+    pattern:   /admin/login_check
+
+admin_login:
+    resource: "@SGSAppBundle/Controller/Admin/LoginController.php"
+    type: annotation

@@ -21,10 +21,13 @@ security:
         - { path: ^/agent, roles: TYPE_AGENT }
         - { path: ^/request/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/request, roles: TYPE_REQUESTER }
+        - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: TYPE_ADMIN }
 
     role_hierarchy:
 
     firewalls:
+
         dispatch_login:
             pattern: ^/dispatch/login$
             anonymous: ~
@@ -60,6 +63,18 @@ security:
                 check_path: /request/login_check
                 username_parameter: _email
                 default_target_path: /request
+
+        admin_login:
+            pattern: ^/admin/login$
+            anonymous: ~
+        admin:
+            access_denied_url: /admin/denied
+            pattern: ^/admin
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login_check
+                username_parameter: _email
+                default_target_path: /admin
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

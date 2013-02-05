@@ -2,6 +2,10 @@ Feature: Requester login
     In order to start using the Requested interface
     I need to log in
 
+    Scenario: Redirection
+        Given I am on "/request"
+        Then I should be on "/request/login"
+
     Scenario: Successful login
         Given a requester identified by "foo@foo.com", "bar"
         And I am on "/request/login"

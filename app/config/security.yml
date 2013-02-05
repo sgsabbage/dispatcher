@@ -34,6 +34,7 @@ security:
         dispatch:
             access_denied_url: /dispatch/denied
             pattern: ^/dispatch
+            context: shared
             form_login:
                 login_path: /dispatch/login
                 check_path: /dispatch/login_check
@@ -46,6 +47,7 @@ security:
         agent:
             access_denied_url: /agent/denied
             pattern: ^/agent
+            context: shared
             form_login:
                 login_path: /agent/login
                 check_path: /agent/login_check
@@ -58,6 +60,7 @@ security:
         request:
             access_denied_url: /request/denied
             pattern: ^/request
+            context: shared
             form_login:
                 login_path: /request/login
                 check_path: /request/login_check
@@ -70,6 +73,7 @@ security:
         admin:
             access_denied_url: /admin/denied
             pattern: ^/admin
+            context: shared
             form_login:
                 login_path: /admin/login
                 check_path: /admin/login_check

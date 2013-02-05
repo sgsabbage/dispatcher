@@ -8,6 +8,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Context\Step;
 
 use SGS\Model\User;
 
@@ -68,7 +69,7 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
     }
 
     /**
-     * @Given /^an? (admin|dispatcher|requester|agent) identified by "([^"]*)", "([^"]*)"$/
+     * @Given /^an? (multi-role user|admin|dispatcher|requester|agent) identified by "([^"]*)", "([^"]*)"$/
      */
     public function aUserIdentifiedBy($type, $email, $pass)
     {
@@ -95,10 +96,33 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
             case "admin":
                 $user->setType(User::TYPE_ADMIN);
                 break;
+            case "multi-role user":
+                $user->setType(255);
+                break;
         }
 
         $em = $container->get('doctrine')->getEntityManager();
         $em->persist($user);
         $em->flush();
+    }
+
+    /**
+     * @When /^I log in as an? (admin|dispatcher|requester|agent) with "([^"]*)", "([^"]*)"$/
+     */
+    public function iLogIn($type, $email, $pass)
+    {
+        $types = array(
+            'admin' => 'admin',
+            'dispatcher' => 'dispatch',
+            'requester' => 'request',
+            'agent' => 'agent'
+        );
+
+        return array(
+            new Step\Given('I am on "'.$types[$type].'"'),
+            new Step\When("I fill in \"email\" with \"$email\""),
+            new Step\When("I fill in \"password\" with \"$pass\""),
+            new Step\When("I press \"Login\"")
+        );
     }
 }

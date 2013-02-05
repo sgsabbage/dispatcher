@@ -2,6 +2,10 @@ Feature: Dispatch login
     In order to start using the Dispatch interface
     I need to log in
 
+    Scenario: Redirection
+        Given I am on "/dispatch"
+        Then I should be on "/dispatch/login"
+
     Scenario: Successful login
         Given a dispatcher identified by "foo@foo.com", "bar"
         And I am on "/dispatch/login"

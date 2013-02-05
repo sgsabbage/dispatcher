@@ -2,6 +2,10 @@ Feature: Agent login
     In order to start using the Agent interface
     I need to log in
 
+    Scenario: Redirection
+        Given I am on "/agent"
+        Then I should be on "/agent/login"
+
     Scenario: Successful login
         Given an agent identified by "foo@foo.com", "bar"
         And I am on "/agent/login"

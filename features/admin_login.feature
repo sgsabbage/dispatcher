@@ -2,6 +2,10 @@ Feature: Admin login
     In order to start using the Admin interface
     I need to log in
 
+    Scenario: Redirection
+        Given I am on "/admin"
+        Then I should be on "/admin/login"
+
     Scenario: Successful login
         Given an admin identified by "foo@foo.com", "bar"
         And I am on "/admin/login"

@@ -19,3 +19,14 @@ agent_login_check:
 agent_login:
     resource: "@SGSAppBundle/Controller/Agent/LoginController.php"
     type: annotation
+
+request_dashboard:
+    resource: "@SGSAppBundle/Controller/Request/DashboardController.php"
+    type: annotation
+
+request_login_check:
+    pattern:   /request/login_check
+
+request_login:
+    resource: "@SGSAppBundle/Controller/Request/LoginController.php"
+    type: annotation

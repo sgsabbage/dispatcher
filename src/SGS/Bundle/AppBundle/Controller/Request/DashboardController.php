@@ -1,10 +1,10 @@
 <?php
-namespace SGS\Bundle\AppBundle\Controller\Dispatch;
+namespace SGS\Bundle\AppBundle\Controller\Request;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * @Route("/dispatch")
+ * @Route("/request")
  */
 class DashboardController
 {

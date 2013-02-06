@@ -125,4 +125,17 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
             new Step\When("I press \"Login\"")
         );
     }
+
+    /**
+     * @Given /^a job belonging to "([^"]*)" called "([^"]*)"$/
+     */
+    public function aJobBelongingToCalled($user, $job)
+    {
+        throw new PendingException();
+    }
+
+    protected function getEntityManager()
+    {
+        return $this->kernel->getContainer()->get('doctrine')->getEntityManager();
+    }
 }

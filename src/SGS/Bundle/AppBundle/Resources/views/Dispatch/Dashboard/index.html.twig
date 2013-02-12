@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<table>
+    <thead>
+        <th>
+            <td>Name</td>
+        </th>
+    </thead>
+    <tbody>
+        {% foreach jobs as job %}
+        <tr>
+            <td>{{ job.name }}</td>
+        </tr>
+        {% endforeach %}
+    </tbody>
+</table>
+{% endblock %}

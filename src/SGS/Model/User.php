@@ -2,6 +2,7 @@
 namespace SGS\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -43,10 +44,16 @@ class User implements UserInterface{
     protected $type;
 
     /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="requester")
+     */
+    protected $requestedJobs;
+
+    /**
      * Creates the salt when constructed
      */
     public function __construct()
     {
+        $this->requestedJobs = new ArrayCollection();
         $this->salt = md5(uniqid(null,true));
     }
 
@@ -192,5 +199,67 @@ class User implements UserInterface{
     public function getRoles()
     {
         return array();
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+    
+        return $this;
+    }
+
+    /**
+     * Add requestedJobs
+     *
+     * @param \SGS\Model\Job $requestedJobs
+     * @return User
+     */
+    public function addRequestedJob(Job $requestedJob, $bCallInverse = true)
+    {
+        if($this->requestedJobs->contains($requestedJob)){
+           return $this; 
+        }
+
+        $this->requestedJobs[] = $requestedJob;
+
+        if($bCallInverse) {
+            $requestedJob->setRequester($this, false);
+        }
+    
+        return $this;
+    }
+
+    /**
+     * Remove requestedJobs
+     *
+     * @param \SGS\Model\Job $requestedJobs
+     */
+    public function removeRequestedJob(Job $requestedJob, $bCallInverse = true)
+    {
+        if(!$this->requestedJobs->contains($requestedJob)){
+            return $this;
+        }
+
+        $this->requestedJobs->removeElement($requestedJob);
+
+        if($bCallInverse) {
+            $requestedJob->setRequester(null, false);
+        }
+    }
+
+    /**
+     * Get requestedJobs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRequestedJobs()
+    {
+        return $this->requestedJobs;
     }
 }

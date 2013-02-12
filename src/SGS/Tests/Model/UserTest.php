@@ -2,6 +2,7 @@
 namespace SGS\Tests\Model;
 
 use SGS\Model\User;
+use \Mockery as m;
 
 class UserTest extends \PHPUnit_Framework_TestCase 
 {
@@ -95,5 +96,86 @@ class UserTest extends \PHPUnit_Framework_TestCase
     {
         $this->user->setType(User::TYPE_DISPATCHER);
         $this->assertFalse($this->user->hasType(User::TYPE_AGENT));
+    }
+
+    public function testGetRequestedJobsIsBlankByDefault()
+    {
+        $this->assertTrue($this->user->getRequestedJobs()->isEmpty());
+    }
+
+    public function testAddingANewRequestedJobAddsToCollections()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $this->user->addRequestedJob($job);
+
+        $this->assertTrue($this->user->getRequestedJobs()->contains($job));
+    }
+
+    public function testRemovingARequestedJobRemovesFromCollection()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $this->user->addRequestedJob($job);
+        $this->user->removeRequestedJob($job);
+
+        $this->assertFalse($this->user->getRequestedJobs()->contains($job));
+    }
+
+    public function testAddingARequestedJobTwiceOnlyResultsInOneJob()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $this->user->addRequestedJob($job);
+        $this->user->addRequestedJob($job);
+
+        $this->assertEquals(1,$this->user->getRequestedJobs()->count());
+    }
+
+    public function testAddingARequestedJobSetsRequester()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $job->shouldReceive('setRequester')->with($this->user,false)->once();
+
+        $this->user->addRequestedJob($job);
+    }
+
+    public function testRemovingARequestedJobSetsRequesterNull()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $job->shouldReceive('setRequester')->with($this->user,false);
+        $job->shouldReceive('setRequester')->with(null, false)->once();
+
+        $this->user->addRequestedJob($job);
+        $this->user->removeRequestedJob($job);
+    }
+
+    public function testAddingARequestedJobWithCallInverseFalseDoesNotSetRequester()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $job->shouldReceive('setRequester')->never();
+
+        $this->user->addRequestedJob($job, false);
+    }
+
+     public function testRemovingARequestedJobWithCallInverseFalseDoesNotSetRequester()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $job->shouldReceive('setRequester')->with($this->user,false);
+        $job->shouldReceive('setRequester')->with(null,false)->never();
+
+        $this->user->addRequestedJob($job);
+        $this->user->removeRequestedJob($job, false);
     }
 }

@@ -10,7 +10,8 @@ use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Context\Step;
 
-use SGS\Model\User;
+use SGS\Model\User,
+    SGS\Model\Job;
 
 //
 // Require 3rd-party libraries here:
@@ -129,9 +130,19 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
     /**
      * @Given /^a job belonging to "([^"]*)" called "([^"]*)"$/
      */
-    public function aJobBelongingToCalled($user, $job)
+    public function aJobBelongingToCalled($user, $jobName)
     {
-        throw new PendingException();
+        $em = $this->getEntityManager();
+        $aoUser = $em->getRepository('Model:User')->findByEmail($user);
+        $oUser = $aoUser[0];
+
+        $job = new Job();
+
+        $job->setName($jobName);
+        $job->setRequester($oUser);
+
+        $em->persist($job);
+        $em->flush();
     }
 
     protected function getEntityManager()

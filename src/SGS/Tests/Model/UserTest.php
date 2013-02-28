@@ -186,4 +186,13 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->user->addRequestedJob($job);
         $this->user->removeRequestedJob($job, false);
     }
+
+    public function testRemovingRequestedJobReturnsUser()
+    {
+        $job = m::mock('SGS\Model\Job');
+        $job->shouldIgnoreMissing();
+
+        $this->user->addRequestedJob($job);
+        $this->assertSame($this->user,$this->user->removeRequestedJob($job, false));
+    }
 }

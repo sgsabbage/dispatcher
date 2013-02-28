@@ -202,19 +202,6 @@ class User implements UserInterface{
     }
 
     /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-    
-        return $this;
-    }
-
-    /**
      * Add requestedJobs
      *
      * @param \SGS\Model\Job $requestedJobs
@@ -251,6 +238,8 @@ class User implements UserInterface{
         if($bCallInverse) {
             $requestedJob->setRequester(null, false);
         }
+
+        return $this;
     }
 
     /**

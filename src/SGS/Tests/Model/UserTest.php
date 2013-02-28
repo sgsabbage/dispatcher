@@ -195,4 +195,9 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->user->addRequestedJob($job);
         $this->assertSame($this->user,$this->user->removeRequestedJob($job, false));
     }
+
+    public function testGetRolesReturnsEmptyArray()
+    {
+        $this->assertEquals(array(),$this->user->getRoles());
+    }
 }

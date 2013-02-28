@@ -188,6 +188,7 @@ class User implements UserInterface{
 
     /**
      * @inheritDoc
+     * @codeCoverageIgnore
      */
     public function eraseCredentials()
     {

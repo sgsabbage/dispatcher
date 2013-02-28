@@ -18,3 +18,6 @@ behat.yml
 
 # Ignore the test database
 test.db
+
+# Ignore coverage
+coverage

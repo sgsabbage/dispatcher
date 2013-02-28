@@ -35,19 +35,6 @@ class Job {
     private $requester;
 
     /**
-     * Set id
-     *
-     * @param integer $id
-     * @return Job
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    
-        return $this;
-    }
-
-    /**
      * Get id
      *
      * @return integer 

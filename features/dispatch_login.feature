@@ -12,7 +12,7 @@ Feature: Dispatch login
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
         And I press "Login"
-        Then I should be on "/dispatch"
+        Then I should be on "/dispatch/"
 
     Scenario: Failed login due to incorrect credentials
         Given a dispatcher identified by "foo@foo.com", "bar"

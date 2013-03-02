@@ -6,13 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-/**
- * @Route("/request")
- */
 class DashboardController extends ContainerAware
 {
     /**
-     * @Route("")
+     * @Route()
      * @Template()
      */
     public function indexAction()

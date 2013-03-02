@@ -6,9 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-/**
- * @Route("/request")
- */
 class LoginController extends ContainerAware
 {
     /**

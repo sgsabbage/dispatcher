@@ -12,7 +12,7 @@ Feature: Requester login
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
         And I press "Login"
-        Then I should be on "/request"
+        Then I should be on "/request/"
 
     Scenario: Failed login due to incorrect credentials
         Given a requester identified by "foo@foo.com", "bar"

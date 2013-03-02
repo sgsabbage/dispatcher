@@ -1,43 +1,31 @@
-dispatch_dashboard:
-    resource: "@SGSAppBundle/Controller/Dispatch/DashboardController.php"
+dispatch:
+    resource: "@SGSAppBundle/Controller/Dispatch"
     type: annotation
+    prefix: /dispatch
 
 dispatch_login_check:
     pattern:   /dispatch/login_check
 
-dispatch_login:
-    resource: "@SGSAppBundle/Controller/Dispatch/LoginController.php"
+agent:
+    resource: "@SGSAppBundle/Controller/Agent"
     type: annotation
-
-agent_dashboard:
-    resource: "@SGSAppBundle/Controller/Agent/DashboardController.php"
-    type: annotation
+    prefix: /agent
 
 agent_login_check:
     pattern:   /agent/login_check
 
-agent_login:
-    resource: "@SGSAppBundle/Controller/Agent/LoginController.php"
+request:
+    resource: "@SGSAppBundle/Controller/Request"
     type: annotation
-
-request_dashboard:
-    resource: "@SGSAppBundle/Controller/Request/DashboardController.php"
-    type: annotation
+    prefix: /request
 
 request_login_check:
     pattern:   /request/login_check
 
-request_login:
-    resource: "@SGSAppBundle/Controller/Request/LoginController.php"
+admin:
+    resource: "@SGSAppBundle/Controller/Admin"
     type: annotation
-
-admin_dashboard:
-    resource: "@SGSAppBundle/Controller/Admin/DashboardController.php"
-    type: annotation
+    prefix: /admin
 
 admin_login_check:
     pattern:   /admin/login_check
-
-admin_login:
-    resource: "@SGSAppBundle/Controller/Admin/LoginController.php"
-    type: annotation

@@ -12,7 +12,7 @@ Feature: Agent login
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
         And I press "Login"
-        Then I should be on "/agent"
+        Then I should be on "/agent/"
 
     Scenario: Failed login due to incorrect credentials
         Given an agent identified by "foo@foo.com", "bar"

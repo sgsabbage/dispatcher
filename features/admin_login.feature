@@ -12,7 +12,7 @@ Feature: Admin login
         When I fill in "email" with "foo@foo.com"
         And I fill in "password" with "bar"
         And I press "Login"
-        Then I should be on "/admin"
+        Then I should be on "/admin/"
 
     Scenario: Failed login due to incorrect credentials
         Given an admin identified by "foo@foo.com", "bar"

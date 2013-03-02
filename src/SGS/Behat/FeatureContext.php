@@ -108,6 +108,7 @@ class FeatureContext extends MinkContext implements \Behat\Symfony2Extension\Con
     }
 
     /**
+     * @Given /^I am logged in as an? (admin|dispatcher|requester|agent) with "([^"]*)", "([^"]*)"$/
      * @When /^I log in as an? (admin|dispatcher|requester|agent) with "([^"]*)", "([^"]*)"$/
      */
     public function iLogIn($type, $email, $pass)

@@ -2,18 +2,24 @@
 
 {% block body %}
 
+<a href={{ path('request_job_new') }}>{% trans %}request.job.new{% endtrans %}</a>  
+
 <table>
     <thead>
         <th>
-            <td>Name</td>
+            <td>{% trans %}job.name{% endtrans %}</td>
         </th>
     </thead>
     <tbody>
-        {% foreach jobs as job %}
+        {% for job in jobs %}
         <tr>
-            <td>{{ job.name }}</td>
+            <td>
+                <a href="{{path('request_job_show', { 'id' : job.id }) }}" >
+                    {{ job.name }}
+                </a>
+            </td>
         </tr>
-        {% endforeach %}
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

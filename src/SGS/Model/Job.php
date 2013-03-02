@@ -3,6 +3,8 @@ namespace SGS\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity()
  * @ORM\Table(name="job")
@@ -21,6 +23,9 @@ class Job {
      * Name of the job
      *
      * @ORM\Column(type="string",length=255)
+     * 
+     * @Assert\NotBlank()
+     *
      * @var string
      * 
      */

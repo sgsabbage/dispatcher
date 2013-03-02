@@ -14,6 +14,8 @@ class ControllerTestCase extends \PHPUnit_Framework_TestCase {
     protected $user;
     protected $doctrine;
     protected $em;
+    protected $formFactory;
+    protected $router;
 
     public function setUpContainer()
     {
@@ -35,7 +37,7 @@ class ControllerTestCase extends \PHPUnit_Framework_TestCase {
             ->andReturn($this->user);
 
         $this->request = m::mock(
-            'Symfony\Component\DependencyInjection\Request'
+            'Symfony\Component\HttpFoundation\Request'
         );
         $this->request->shouldIgnoreMissing();  
 
@@ -65,13 +67,32 @@ class ControllerTestCase extends \PHPUnit_Framework_TestCase {
         $this->request->shouldReceive('getSession')
             ->andReturn($this->session);
 
+        $this->formFactory = m::mock(
+            'Symfony\Component\Form\formFactory'
+        );
+        $this->formFactory->shouldIgnoreMissing();
+
+        $this->router = m::mock(
+            'Symfony\Bundle\FrameworkBundle\Routing\Router'
+        );
+        $this->router->shouldIgnoreMissing();
+
+        $this->container->shouldReceive('get')->with('session')
+            ->andReturn($this->session);
+            
         $this->container->shouldReceive('get')->with('request')
             ->andReturn($this->request);
+
+        $this->container->shouldReceive('get')->with('router')
+            ->andReturn($this->router);
 
         $this->container->shouldReceive('get')->with('security.context')
             ->andReturn($this->secContext);
 
         $this->container->shouldReceive('get')->with('doctrine')
             ->andReturn($this->doctrine);
+
+        $this->container->shouldReceive('get')->with('form.factory')
+            ->andReturn($this->formFactory);
     }
 }

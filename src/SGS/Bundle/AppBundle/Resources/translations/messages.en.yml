@@ -1,1 +1,6 @@
 Bad credentials: Invalid credentials supplied
+
+
+job.name: Name
+request.job.submit: Request job
+request.job.new: Request a new job

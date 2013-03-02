@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class DashboardController extends ContainerAware
 {
     /**
-     * @Route()
+     * @Route(name="request_dashboard")
      * @Template()
      */
     public function indexAction()

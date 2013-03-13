@@ -21,3 +21,6 @@ test.db
 
 # Ignore coverage
 coverage
+
+# Ignore .DS_Store
+.DS_Store

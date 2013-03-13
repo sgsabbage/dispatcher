@@ -24,3 +24,5 @@ coverage
 
 # Ignore .DS_Store
 .DS_Store
+
+app/Resources/less/custom.less

@@ -5,8 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets 
-                '../vendor/twitter/bootstrap/less/bootstrap.less'
-                '../vendor/twitter/bootstrap/less/responsive.less'
+                '../app/Resources/less/custom.less'
                 filter = 'cssrewrite' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
@@ -14,13 +13,19 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% for flashMessage in app.session.flashbag.get('error') %}
-            <div class="flash-error">
-                {{ flashMessage }}
+        <div class='container-fluid'>
+            <div class='row-fluid'>
+                <div class='span10 offset1'>
+                    {% for flashMessage in app.session.flashbag.get('error') %}
+                        <div class="alert alert-error">
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                    
+                    {% block body %}{% endblock %}
+                </div>
             </div>
-        {% endfor %}
-        
-        {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

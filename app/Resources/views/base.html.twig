@@ -17,7 +17,7 @@
             <div class="navbar-inner">
                 <div class='row-fluid'>
                     <div class='span10 offset1'>
-                        <a class="brand" href="#">{% trans %}dispatcher.title{% endtrans %}</a>
+                        <a class="brand" href="{% block nav_root %}{% endblock %}">{% trans %}dispatcher.title{% endtrans %}</a>
                         <ul class='nav'>
                             <li class="divider-vertical"></li>
                             {% block nav_items %}{% endblock %}

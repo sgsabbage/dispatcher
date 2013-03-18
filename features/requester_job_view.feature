@@ -14,7 +14,6 @@ Feature: Viewing job as requester
         Then I should be on "/request/job/1"
         And I should see "Foo job"
 
-    @wip
     Scenario: Trying to view someone else's job
         Given a requester identified by "foo@foo.com", "pass"
         And a job belonging to "foo@foo.com" called "Foo job"

@@ -1,3 +1,18 @@
+dispatcher.title: Dispatcher
+
+welcome.header: Welcome to Dispatcher
+welcome.roleselect: What's your role?
+
+welcome.requester: Requester
+welcome.admin: Admin
+welcome.agent: Agent
+welcome.dispatcher: Dispatcher
+
+welcome.requester.text: A requester creates jobs to be handled by dispatchers and agents
+welcome.admin.text: The admin controls the back end of the system, ensuring that everybody has everything they need to do their jobs.
+welcome.agent.text: An agent carries out the jobs assigned to them by a dispatcher.
+welcome.dispatcher.text: A dispatcher is responsible for taking job requests made by requesters and assigning them to agents.
+
 Bad credentials: Invalid credentials supplied
 
 

@@ -1,3 +1,7 @@
+welcome:
+    resource: "@SGSAppBundle/Controller"
+    type: annotation
+
 dispatch:
     resource: "@SGSAppBundle/Controller/Dispatch"
     type: annotation

@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DashboardController
 {
     /**
-     * @Route("")
+     * @Route("", name="admin_dashboard")
      */
     public function indexAction()
     {

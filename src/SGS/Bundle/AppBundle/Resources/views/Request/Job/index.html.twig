@@ -2,13 +2,13 @@
 
 {% block body %}
 
-<a href={{ path('request_job_new') }}>{% trans %}request.job.new{% endtrans %}</a>  
+<a class='btn btn-success btn-block' href={{ path('request_job_new') }}>{% trans %}request.job.new{% endtrans %}</a>  
 
-<table>
+<table class='table'>
     <thead>
-        <th>
-            <td>{% trans %}job.name{% endtrans %}</td>
-        </th>
+        <tr>
+            <th>{% trans %}job.name{% endtrans %}</th>
+        </tr>
     </thead>
     <tbody>
         {% for job in jobs %}

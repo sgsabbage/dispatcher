@@ -13,6 +13,20 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <div class="navbar navbar-static-top navbar-inverse">
+            <div class="navbar-inner">
+                <div class='row-fluid'>
+                    <div class='span10 offset1'>
+                        <a class="brand" href="#">Dispatcher</a>
+                        <ul class='nav'>
+                            <li class="divider-vertical"></li>
+                            {% block nav_items %}{% endblock %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class='container-fluid'>
             <div class='row-fluid'>
                 <div class='span10 offset1'>

@@ -16,6 +16,7 @@ class ControllerTestCase extends \PHPUnit_Framework_TestCase {
     protected $em;
     protected $formFactory;
     protected $router;
+    protected $flashBag;
 
     public function setUpContainer()
     {
@@ -46,10 +47,18 @@ class ControllerTestCase extends \PHPUnit_Framework_TestCase {
         );
         $this->attributes->shouldIgnoreMissing();
 
+        $this->flashBag = m::mock(
+            'Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface'
+        );
+        $this->flashBag->shouldIgnoreMissing();
+
         $this->session = m::mock(
             'Symfony\Component\HttpFoundation\Session\SessionInterface'
         );
         $this->session->shouldIgnoreMissing();
+
+        $this->session->shouldReceive('getFlashBag')
+            ->andReturn($this->flashBag);
 
         $this->em = m::mock(
             'Doctrine\ORM\EntityManager'

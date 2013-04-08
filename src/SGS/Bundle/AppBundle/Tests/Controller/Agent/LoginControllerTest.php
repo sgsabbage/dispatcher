@@ -64,6 +64,8 @@ class LoginControllerTest extends ControllerTestCase
     {
         $email = 'email';
 
+        $this->session->shouldReceive('get')->with(SecurityContext::AUTHENTICATION_ERROR)
+            ->andReturn(null);
         $this->session->shouldReceive('get')->with(SecurityContext::LAST_USERNAME)->andReturn($email);
 
         $response = $this->controller->loginAction();
